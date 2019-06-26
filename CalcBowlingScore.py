@@ -5,6 +5,7 @@ Python 3.7.2
 """
 
 import sys
+from os import path
 
 NUM_FRAMES = 10
 
@@ -97,6 +98,9 @@ def is_spare(roll1: list, roll2: list) -> bool:
 def main():
 	if len(sys.argv) < 2:
 		print("Please include a relative path for the input file.")
+		return
+	if not path.exists(sys.argv[1]):
+		print("This file does not exist.")
 		return
 
 	roll_list = read_rolls_from_file(sys.argv[1])
