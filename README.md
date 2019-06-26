@@ -22,7 +22,7 @@ Given a valid sequence of rolls for one line of American Ten-Pin Bowling, produc
 
 **Test Cases**
 - To run a test case on a Windows machine with Python3 installed, use the following format:
-  `py CalcBowlingScore.py unit-tests\test_3.txt`
+  - `py CalcBowlingScore.py unit-tests\test_3.txt`
 - The included test cases have the following expected outputs:
   - test_1: 106
   - test_2: 136
