@@ -33,3 +33,4 @@ Given a valid sequence of rolls for one line of American Ten-Pin Bowling, produc
   - test_3: 51
   - test_perfect: 300
   - test_worst: 0
+  - test_flexibleinput: 99
