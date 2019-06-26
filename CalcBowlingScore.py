@@ -6,7 +6,6 @@ Python 3.7.2
 
 import sys
 
-PIN_LIST = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 NUM_FRAMES = 10
 
 
@@ -49,7 +48,7 @@ def calc_score(roll_list: list) -> int:
 
 def read_rolls_from_file(fileName: str) -> list:
 	"""Reads a Ten-Pin Bowling game's list of rolls from the given file. Each line
-	is a seperate roll. Gutter balls will result in an empty line.
+	is a seperate roll. Gutter balls are represented by an empty line.
 
 	Args:
 		fileName: A string path for the input file.
@@ -63,6 +62,7 @@ def read_rolls_from_file(fileName: str) -> list:
 		while line:
 			roll_list.append(line.split())
 			line = file.readline()
+		roll_list.append([])
 	return roll_list
 
 
@@ -76,7 +76,7 @@ def is_strike(roll: list) -> bool:
 	Returns:
 		A boolean value representing whether the roll was a strike.
 	"""
-	return all(elem in roll  for elem in PIN_LIST)
+	return len(roll) == 10
 
 
 def is_spare(roll1: list, roll2: list) -> bool:
@@ -91,11 +91,18 @@ def is_spare(roll1: list, roll2: list) -> bool:
 		A boolean value representing whether the rolls were a spare.
 	"""
 	combined_roll = roll1 + roll2
-	return all(elem in combined_roll for elem in PIN_LIST)
+	return len(combined_roll) == 10
 
 
-if __name__ == "__main__":
+def main():
+	if len(sys.argv) < 2:
+		print("Please include a relative path for the input file.")
+		return
+
 	roll_list = read_rolls_from_file(sys.argv[1])
 	score = calc_score(roll_list)
 
 	print("Score = " + str(score))
+
+if __name__ == "__main__":
+	main()
